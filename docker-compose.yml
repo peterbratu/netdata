@@ -14,9 +14,12 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./charts.d.conf:/etc/netdata/charts.d.confz
+      - ./pcharts.d.conf:/etc/netdata/charts.d.conf
     environment: 
       PGID: 998
+      SEND_SLACK: "YES"
+      SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
+      DEFAULT_RECIPIENT_SLACK: "monitoring"
     restart: unless-stopped
     #command: -W set 'netdata.config' 'sensors' 'force'
 
